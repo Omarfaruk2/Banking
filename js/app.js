@@ -5,12 +5,10 @@ function getinput(money) {
     const inputValue = parseInt(inputvalueText);
     return inputValue;
 }
-function getText() {
-    const textValue = document.getElementById('totalExpence-money')
-    // const expenceValueText = textValue.innerText;
+function getText(jan) {
+    const textValue = document.getElementById(jan + '-money')
     return textValue;
 }
-
 document.getElementById('calculate-btn').addEventListener('click',
     function () {
         const income = getinput('income');
@@ -19,22 +17,29 @@ document.getElementById('calculate-btn').addEventListener('click',
         const clothes = getinput('clothes');
         const total = food + rent + clothes;
 
-        // const textValue = document.getElementById('totalExpence-money')
-        // const expenceValueText = textValue.innerText;
-        const good = getText();
-        textValue.innerText = total;
+        const hello = getText('totalExpence')
+        hello.innerText = total;
 
-        const avilableMoney = document.getElementById('avilable-money');
-        const avilableMoneyValueText = avilableMoney.innerText;
-
+        let avilableMoney = getText('avilable');
         const avilable = income - total;
         avilableMoney.innerText = avilable
 
     })
 document.getElementById('save-btn').addEventListener('click',
     function () {
+        let avilableMoney = getText('avilable');
         const saveInput = getinput('save');
-        console.log(good);
+        const savingAmountValue = avilableMoney.innerText * saveInput / 100;
+
+        const savingAmount = getText('saving')
+        savingAmount.innerText = savingAmountValue;
+
+        const remainingAmount = getText('remaiening');
+        remainingAmount.innerText = avilableMoney.innerText - savingAmount.innerText;
+
+        // console.log(remainingAmount.innerText, 'hello')
+
+
     })
 
 
