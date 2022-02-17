@@ -3,6 +3,9 @@ function getinput(money) {
     const input = document.getElementById(money + '-input');
     const inputvalueText = input.value;
     const inputValue = parseInt(inputvalueText);
+    if (isNaN(input.value) || input.value < 0) {
+        alert('hello')
+    }
     return inputValue;
 }
 function getText(jan) {
