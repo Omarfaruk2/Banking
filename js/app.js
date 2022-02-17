@@ -5,13 +5,13 @@ function getinput(money) {
     const input = document.getElementById(money + '-input');
     const inputvalueText = input.value;
     const inputValue = parseInt(inputvalueText);
-    if (isNaN(input.value) || input.value < 0 || input.value == '') {
-        inputValue == out;
-        return alert("Your number isn't a valid, Input a valid number");
-    }
-    else {
-        return inputValue;
-    }
+    // if (isNaN(input.value) || input.value < 0 || input.value == '') {
+    //     good.innerText = out;
+    //     return alert("Your number isn't a valid, Input a valid number");
+    // }
+
+    return inputValue;
+
 }
 
 // -------------------------------------input-Itext-function----------------------------------
@@ -23,15 +23,30 @@ function getText(jan) {
 // -------------------------------------------calculate -Button----------------------------
 document.getElementById('calculate-btn').addEventListener('click',
     function () {
+        let out = 00;
         const income = getinput('income');
         const food = getinput('food');
         const rent = getinput('rent');
         const clothes = getinput('clothes');
         const total = food + rent + clothes;
         const useMoney = getText('totalExpence')
+
+
         if (useMoney.innerText > income) {
             alert('Your Expence is more then Income, Try to expence less then income');
         }
+        else if (isNaN(food) || food < 0 || food == '') {
+            useMoney.innerText = 0;
+            return alert("Your number isn't a valid, Input a valid number");
+
+        }
+
+        else if (useMoney.innerText > income) {
+            alert('Your Expence is more then Income, Try to expence less then income');
+        }
+        // else if (useMoney.innerText > income) {
+        //     alert('Your Expence is more then Income, Try to expence less then income');
+        // }
         else {
             useMoney.innerText = total;
             let avilableMoney = getText('avilable');
